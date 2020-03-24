@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.binbini.binsearch.mapper.LinkMapper">
+
+    <update id="insertLink" parameterType="com.binbini.binsearch.model.Link">
+        update link set ${titleId} = #{title},${contentId} = #{content} where username = #{username} 
+    </update>
+ 
+ 	<update id="deleteLink" parameterType="com.binbini.binsearch.model.Link">
+ 		update link set ${titleId} = '',${contentId} = '' where username = #{username}
+ 	</update>
+</mapper>

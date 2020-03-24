@@ -1,0 +1,495 @@
+*{	
+	margin: 0 auto;
+	padding: 0;
+}
+#box,#times,#ShortcutBar_Box,#Login_main p,input,#Login_btn{
+	transition: all 0.5s;
+}
+@media screen and (min-width: 1150px) {
+	#box{
+		position: relative;
+		width: 550px;
+		margin-top: 150px;
+	}
+	#out{
+		position: relative;
+		width:550px;
+		height:60px;
+		/* margin: 160px 350px; */
+		color: #333;
+	}
+	#ser_box{
+		width:550px;
+		height:32px;
+		text-align: center;
+	}
+	#ipt{
+		width:220px;
+		height: 40px;
+		margin-top: 2px;
+		border: 0;
+		outline: 0;
+		font-family: "微软雅黑";
+		font-size: 14px;
+		border-radius: 20px;
+		text-align: center;
+		opacity: 0.3;
+		box-shadow: 0 0 15px rgb(97, 97, 97);
+	}
+	@keyframes ipt_getFocus{
+		from{
+			width: 550px;
+			opacity: 0.6;
+		}to{
+			width: 550px;
+			opacity: 1;
+		}
+	}
+	@keyframes ipt_loseFocus{
+		from{
+			width: 550px;
+			opacity: 1;
+		}to{
+			width: 220px;
+			opacity: 0.3;
+		}
+	}
+	@keyframes ipt_over{
+		from{
+			width: 220px;
+			opacity: 0.3;
+		}to{
+			width: 550px;
+			opacity: 0.6;
+		}
+	}
+	@keyframes ipt_out{
+		from{
+			width: 550px;
+			opacity: 0.6;
+		}to{
+			width: 220px;
+			opacity: 0.3;
+		}
+	}
+	#bot_box{
+		width:550px;
+		border-radius: 20px;
+		background-color: #FFF;
+		margin-top: 13px;
+		display: none;
+	}
+	#bot_box ul li{
+		list-style: none;
+		line-height: 25px;
+		padding-left: 10px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-size: 12px;
+		padding-left: 20px;
+		cursor: pointer;
+	}
+	#bot_box ul li:hover{
+		background: #a9d966;
+		transition: all 0.3s ease 0s;
+		-webkit-transition: all 0.3s ease 0s;
+		-moz-transition: all 0.3s ease 0s;
+		-ms-transition: all 0.3s ease 0s;
+		-o-transition: all 0.3s ease 0s;
+	}
+	#bot_box ul li:first-child{
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+	#bot_box ul li:last-child{
+		border-bottom-left-radius: 20px;
+		border-bottom-right-radius: 20px;
+	}
+	.sel{
+		background:#BCBCBC;
+	}
+	/* #input_text{
+		z-index: -3;
+		width: 150px;
+		height: 40px;
+		position: relative;
+		bottom: 40px;
+		line-height: 40px;
+		font-size: 14px;
+		color: #FFF;
+	}
+	@keyframes ipt_text_over {
+		from{
+			color: #FFF;
+		}to{
+			color: #000;
+		}
+	}
+	@keyframes ipt_text_out {
+		from{
+			color: #000;
+		}to{
+			color: #FFF;
+		}
+	} */
+	#times{
+		cursor: pointer;
+		position: relative;
+		top: 120px;
+		width: 150px;
+		height: 60px;
+		color: #FFF;
+		font-size: 36px;
+		text-align: center;
+		line-height: 80px;
+		z-index: 2001;
+	  }
+	  #times_border{
+		border-radius: 1px;
+		position: relative;
+		bottom: 10px;
+		width: 0px;
+		height: 2px;
+		background-color: rgb(52, 207, 60);
+	  }
+	  @keyframes times_scale_over{
+		0%{
+		  transform: scale(1);
+		}
+		25%{
+		  transform: scale(1.05);
+		}
+		50%{
+		  transform: scale(1.1);
+		}
+		75%{
+		  transform: scale(1.15);
+		}
+		100%{
+		  transform: scale(1.1);
+		}
+	  }
+	  @keyframes times_scale_out{
+		0%{
+		  transform: scale(1.1);
+		}
+		25%{
+		  transform: scale(1.05);
+		}
+		50%{
+		  transform: scale(1);
+		}
+		75%{
+		  transform: scale(0.95);
+		}
+		100%{
+		  transform: scale(1);
+		}
+	  }
+	  @keyframes times_over{
+		from{
+		  width: 0px;
+		}to{
+		  width: 65%;
+		}
+	  }
+	  @keyframes times_out{
+		from{
+		  width: 65%;
+		}to{
+		  widows: 0px;
+		}
+	  }
+	  #search_choose{
+	  	position: absolute;
+	  	left: 155px;
+		top: 80px;
+	  	width: 240px;
+	  	height: 60px;
+	  }
+	  #search_choose div{
+	  	width:60px;
+	  	height:30px;
+	  	cursor: pointer;
+	  	background-color: rgba(184,184,184,.4);
+	  	display: flex;
+	  	align-items: center;
+	  	border-radius: 30px;
+	  	cursor: pointer;
+	  }
+	  #search_choose div img{
+	  	height:45%;
+	  }
+	  #search_choose #baidu{
+	  	float:left;
+	  }
+	  #search_choose #biying{
+	  	float:left;
+	  	margin-left: 30px;
+	  }
+	  #search_choose #google{
+	  	float:right;
+	  }
+}
+@media screen and (max-width: 1150px) {
+	#box{
+		width: 350px;
+		position: relative;
+		margin-top: 100px;
+	}
+	#out{
+		position: relative;
+		width:350px;
+		height:60px;
+		color: #333;
+	}
+	#ser_box{
+		width:350px;
+		height:32px;
+		text-align: center;
+	}
+	#ipt{
+		width:220px;
+		height: 40px;
+		margin-top: 2px;
+		border: 0;
+		outline: 0;
+		font-family: "微软雅黑";
+		font-size: 14px;
+		border-radius: 20px;
+		text-align: center;
+		opacity: 0.3;
+		box-shadow: 0 0 15px rgb(97, 97, 97);
+	}
+	@keyframes ipt_getFocus{
+		from{
+			width: 350px;
+			opacity: 0.6;
+		}to{
+			width: 350px;
+			opacity: 1;
+		}
+	}
+	@keyframes ipt_loseFocus{
+		from{
+			width: 350px;
+			opacity: 1;
+		}to{
+			width: 220px;
+			opacity: 0.3;
+		}
+	}
+	@keyframes ipt_over{
+		from{
+			width: 220px;
+			opacity: 0.3;
+		}to{
+			width: 350px;
+			opacity: 0.6;
+		}
+	}
+	@keyframes ipt_out{
+		from{
+			width: 350px;
+			opacity: 0.6;
+		}to{
+			width: 220px;
+			opacity: 0.3;
+		}
+	}
+	#bot_box{
+		width:350px;
+		border-radius: 20px;
+		background-color: #FFF;
+		margin-top: 13px;
+		display: none;
+	}
+	#bot_box ul li{
+		list-style: none;
+		line-height: 25px;
+		padding-left: 10px;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		font-size: 12px;
+		padding-left: 20px;
+		cursor: pointer;
+	}
+	#bot_box ul li:hover{
+		background: #a9d966;
+		transition: all 0.3s ease 0s;
+		-webkit-transition: all 0.3s ease 0s;
+		-moz-transition: all 0.3s ease 0s;
+		-ms-transition: all 0.3s ease 0s;
+		-o-transition: all 0.3s ease 0s;
+	}
+	#bot_box ul li:first-child{
+		border-top-left-radius: 20px;
+		border-top-right-radius: 20px;
+	}
+	#bot_box ul li:last-child{
+		border-bottom-left-radius: 20px;
+		border-bottom-right-radius: 20px;
+	}
+	.sel{
+		background:#BCBCBC;
+	}
+	/* #input_text{
+		z-index: -3;
+		width: 150px;
+		height: 40px;
+		position: relative;
+		bottom: 40px;
+		line-height: 40px;
+		font-size: 14px;
+		color: #FFF;
+	}
+	@keyframes ipt_text_over {
+		from{
+			color: #FFF;
+		}to{
+			color: #000;
+		}
+	}
+	@keyframes ipt_text_out {
+		from{
+			color: #000;
+		}to{
+			color: #FFF;
+		}
+	} */
+	#times{
+		cursor: pointer;
+		position: relative;
+		top: 70px;
+		width: 150px;
+		height: 60px;
+		color: #FFF;
+		font-size: 32px;
+		text-align: center;
+		line-height: 80px;
+		z-index: 2001;
+	  }
+	  #times_border{
+		border-radius: 1px;
+		position: relative;
+		bottom: 10px;
+		width: 0px;
+		height: 2px;
+		background-color: rgb(52, 207, 60);
+	  }
+	  @keyframes times_scale_over{
+		0%{
+		  transform: scale(1);
+		}
+		25%{
+		  transform: scale(1.05);
+		}
+		50%{
+		  transform: scale(1.1);
+		}
+		75%{
+		  transform: scale(1.15);
+		}
+		100%{
+		  transform: scale(1.1);
+		}
+	  }
+	  @keyframes times_scale_out{
+		0%{
+		  transform: scale(1.1);
+		}
+		25%{
+		  transform: scale(1.05);
+		}
+		50%{
+		  transform: scale(1);
+		}
+		75%{
+		  transform: scale(0.95);
+		}
+		100%{
+		  transform: scale(1);
+		}
+	  }
+	  @keyframes times_over{
+		from{
+		  width: 0px;
+		}to{
+		  width: 65%;
+		}
+	  }
+	  @keyframes times_out{
+		from{
+		  width: 65%;
+		}to{
+		  widows: 0px;
+		}
+	  }
+	  #search_choose{
+	  	position: absolute;
+	  	left: 55px;
+		top: 80px;
+	  	width: 240px;
+	  	height: 60px;
+	  }
+	  #search_choose div{
+	  	width:60px;
+	  	height:30px;
+	  	cursor: pointer;
+	  	background-color: rgba(184,184,184,.4);
+	  	display: flex;
+	  	align-items: center;
+	  	border-radius: 30px;
+	  }
+	  #search_choose div img{
+	  	height:45%;
+	  }
+	  #search_choose #baidu{
+	  	float:left;
+	  }
+	  #search_choose #biying{
+	  	float:left;
+	  	margin-left: 30px;
+	  }
+	  #search_choose #google{
+	  	float:right;
+	  }
+}
+#input_text{
+	z-index: -3;
+	width: 150px;
+	height: 40px;
+	position: relative;
+	bottom: 40px;
+	line-height: 40px;
+	font-size: 14px;
+	color: #FFF;
+}
+@keyframes ipt_text_over {
+	from{
+		color: #FFF;
+	}to{
+		color: #000;
+	}
+}
+@keyframes ipt_text_out {
+	from{
+		color: #000;
+	}to{
+		color: #FFF;
+	}
+}
+@keyframes search_choose_true {
+	from{
+		background-color: rgba(184,184,184,.4);
+	}to{
+		background-color: rgba(184,184,184,.7);
+	}
+}
+@keyframes search_choose_false {
+	from{
+		background-color: rgba(184,184,184,.7);
+	}to{
+		background-color: rgba(184,184,184,.4);
+	}
+}

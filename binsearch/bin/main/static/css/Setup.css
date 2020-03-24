@@ -1,0 +1,459 @@
+#Setup{
+    z-index: 2000;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#SetupBg{
+    position: absolute;
+    z-index: -100;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+@keyframes Setup_in{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 0.5;
+    }
+}
+@keyframes Setup_out{
+    from{
+        opacity: 0.5;
+    }to{
+        opacity: 0;
+    }
+}
+#ShortcutBar_default li{
+    float: left;
+    
+    margin-left: 48px;
+    margin-top: 20px;
+    text-align: center;
+}
+#ShortcutBar_default a{
+    padding-top: 8px;
+    width: 70px;
+    height: 25px;
+    color: #FFF;
+    font-size: 12px;
+    text-decoration: none;
+    display: block;
+    border-radius: 25px;
+
+    transition: all 0.5s;
+}
+#ShortcutBar_default a:hover{
+    background: rgba(129, 129, 129, 0.3);
+    color: rgb(29, 180, 36);
+}
+@media screen and (min-width: 1150px) {
+    #ShortcutBar_Box{
+        position: relative;
+        margin-top: 210px;
+        width: 1100px;
+        height: 600px;
+    }
+    #ShortcutBar_custom_box{
+        position: relative;
+        width: 1100px;
+        bottom: 100px;
+    }
+    #ShortcutBar_default{
+        width: 750px;
+        height: 300px;
+    }
+    #ShortcutBar_default ul{
+        width: 650px;
+    }
+    #ShortcutBar_custom{
+        bottom: 0px;
+        width: 100%;
+        height: 100px;
+    }
+    #ShortcutBar_custom li{
+        float: left;
+        width: 100px;
+        height: 70px;
+        background-color: rgba(129, 129, 129, 0.5);
+        margin-left: 6px;
+        border-radius: 5px;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    #ShortcutBar_custom li p{
+    	margin-top: 5px;
+    	position: relative;
+    	left: -32px;
+        font-size: 12px;
+        color: rgba(255,255,255, 0.5);
+    }
+    #ShortcutBar_custom li .link_true{
+    	text-align: center;width: 20px;height: 20px;padding: 6px;margin-top: 18px;border-radius: 50%;background-color: rgba(92, 92, 92, 0.5);
+    }
+    #ShortcutBar_custom li .link_true a{
+    	text-decoration: none;font-size: 14px;color: rgb(30, 155, 68);font-weight: 600;
+    }
+    #ShortcutBar_custom li .link_false{
+    	text-align: center;width: 20px;height: 20px;padding: 6px;margin-top: 18px;border-radius: 50%;color:rgba(255,255,255, 0.5);
+    }
+    #ShortcutBar_custom li:nth-child(1){
+        margin-left: 20px;
+    }
+}
+@media screen and (max-width: 1150px) {
+    #ShortcutBar_Box{
+        position: relative;
+        margin-top: 180px;
+        width: 90%;
+        height: 600px;
+        min-width: 400px;
+    }
+    #ShortcutBar_default{
+        width: 95%;
+        height: 300px;
+    }
+    #ShortcutBar_default ul{
+        width: 100%;
+        max-width: 630px;
+    }
+    #ShortcutBar_custom_box{
+        position: relative;
+        width: 90%;
+        /* bottom: 200px; */
+        left: 5%;
+    }
+    #ShortcutBar_custom{
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 100px;
+
+    }
+    #ShortcutBar_custom li{
+        float: left;
+        width: 70px;
+        height: 45px;
+        background-color: rgba(129, 129, 129, 0.5);
+        margin-left: 6px;
+        margin-bottom: 6px;
+        border-radius: 5px;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    #ShortcutBar_custom li p{
+    	margin-top: -10px;
+    	position: relative;
+    	left: -32px;
+        font-size: 6px;
+        color: rgba(255,255,255, 0.5);
+    }
+    #ShortcutBar_custom li .link_true{
+    	text-align: center;width: 10px;height: 10px;padding: 6px;margin-top: 10px;border-radius: 50%;background-color: rgba(92, 92, 92, 0.5);
+    }
+    #ShortcutBar_custom li .link_true a{
+    	text-decoration: none;font-size: 12px;color: rgb(30, 155, 68);font-weight: 600;
+    	position: relative;
+    	top: -7px;
+    }
+    #ShortcutBar_custom li .link_false{
+    	text-align: center;width: 20px;height: 20px;padding: 6px;margin-top: 5px;border-radius: 50%;color:rgba(255,255,255, 0.5);
+    }
+}
+#ShortcutBar_custom li:hover{
+    background-color: rgba(129, 129, 129, 0.8);
+}
+#custom_window{
+    position: absolute;
+    width: 300px;
+    height: 180px;
+    background-color: #FFF;
+    border-radius: 15px;
+    display: none;
+    z-index: 2003;
+}
+#custom_window p{
+    font-size: 15px;
+    padding-top: 20px;
+    margin: 0px 0px 10px 15px;
+}
+#custom_btn{
+    font-size: 14px;
+    width: 60px;
+    height: 25px;
+    color: #FFF;
+    background-color: #80c919;
+    text-align: center;
+    padding-top: 5px;
+    border-radius: 5px;
+    float: right;
+    margin-right: 25px;
+    cursor: pointer;
+
+    transition: all 0.3s;
+}
+#custom_btn:hover{
+    background-color: #77bb19;
+}
+#custom_del{
+	position: absolute;
+	width:100px;
+	height: 40px;
+	background-color: #FFF;
+	border-radius: 5px;
+	display: none;
+    z-index: 2004;
+    cursor: pointer;
+    
+    transition: all 0.3s;
+}
+#custom_del:hover{
+	background-color: #e2e2e2;
+}
+#custom_del p{
+	font-size: 14px;
+	padding: 10px 15px;
+}
+.cw_box{
+    position: relative;
+    left: -10px;
+    width: 80%;
+    height: 30px;
+    margin-bottom: 13px;
+}
+.cw_box input{
+    padding-left: 20px;
+    width: 100%;
+    height: 100%;
+    border-radius: 18px;
+    background-color: rgb(228, 228, 228);
+    outline: none;
+    border: none;
+}
+.cw_box input:focus{
+    background-color: rgb(208, 208, 208);
+}
+#User_btn{
+    position: absolute;
+    right: 130px;
+    top: 30px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    transition: all 0.5s;
+}
+#Setup_btn{
+    position: absolute;
+    right: 50px;
+    top: 35px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+    transition: all 0.5s;
+}
+/** 更换背景的模糊度*/
+@keyframes bg_blur_c1{
+    from{
+        filter: blur(5px);
+        transform:scale(1.1);
+    }to{
+        filter: blur(20px);
+        transform:scale(1.1);
+    }
+}
+@keyframes bg_blur_c2{
+    from{
+        filter: blur(20px);
+        transform:scale(1.1);
+    }to{
+        filter: blur(5px);
+        transform:scale(1.1);
+    }
+}
+#Setup_btn img{
+    width: 100%;
+    height: 100%;
+}
+#Setup_btn:hover{
+    transform: rotate(90deg);
+}
+#User_btn img{
+    width: 100%;
+    height: 100%;
+}
+#photo_box{
+    z-index: 2002;
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+#change_photo{
+    margin: auto;
+    position: relative;
+    border-radius: 20px;
+    width: 70%;
+    max-width: 600px;
+    min-width: 400px;
+    height: 450px;
+    background: rgba(255,255,255,1);
+    top: 25%;
+
+    /* display: none; */
+    transform-style: preserve-3d;
+    transform: rotateX(-90deg) rotateY(-45deg) rotateZ(0deg);
+}
+@keyframes change_photo_show{
+    from{
+        transform: rotateX(-90deg) rotateY(-45deg) rotateZ(0deg);
+        opacity: 0;
+    }to{
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        opacity: 1;
+    }
+}
+@keyframes change_photo_out{
+    from{
+        transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        opacity: 1;
+    }to{
+        transform: rotateX(-90deg) rotateY(-45deg) rotateZ(0deg);
+        opacity: 0;
+    }
+}
+@keyframes change_photo_view_show{
+    from{
+        opacity: 0;
+    }to{
+        opacity: 1;
+    }
+}
+@keyframes change_photo_view_out{
+    from{
+        opacity: 1;
+    }to{
+        opacity: 0;
+    }
+}
+#change_photo_title{
+    position: absolute;
+    left: 60px;
+    top: 40px;
+    font-size: 26px;
+}
+#photo_close{
+    position: relative;
+    float: right;
+    right: 40px;
+    top: 30px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transform-origin: 50% 50%;
+}
+#Login_close{
+    position: relative;
+    float: right;
+    right: 40px;
+    top: 30px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transform-origin: 50% 50%;
+}
+#photo_content{
+    position: relative;
+    top: 100px;
+    width: 80%;
+    height: 300px;
+    overflow: auto;
+}
+#photo_content::-webkit-scrollbar{
+    width: 4px;     /*高宽分别对应横竖滚动条的尺寸*/
+    height: 10px;
+}
+#photo_content::-webkit-scrollbar-thumb {/*滚动条里面小方块*/
+    border-radius: 10px;
+    background: #c0c0c0;
+}
+.photo_title{
+    clear: left;
+    line-height: 28px;
+    margin-left: 26px;
+    font-size: 12px;
+    color: rgb(173, 173, 173);
+}
+.photo_list{
+    width: 90%;
+}
+.photo_list li{
+    position: relative;
+    float: left;
+    width: 130px;
+    height: 75px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    background-color: #000;
+}
+.photo_list li img{
+    
+    width: 130px;
+    height: 75px;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+.photo_list li img:hover{
+    transform: scale(1.1);
+    opacity:0.7; filter: alpha(opacity=70);
+}
+.photo_list li:last-child{
+    margin-right: 0px;
+}
+#user_setup{
+	display: none;
+	position: absolute;
+	right: 70px;
+	top: 55px;
+	width: 85px;
+	height: 60px;
+	background-color: #6F6F6F;
+	border-radius: 8px;
+}
+#user_setup div{
+	display: flex;
+	padding-left: 5px;
+	align-items: center;
+	font-size: 12px;
+	cursor: pointer;
+	color: #FFF;
+}
+#user_setup div:nth-child(1){
+	width: 80px;
+	height: 50%;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	
+	transition: 0.5s;
+}
+#user_setup div:nth-child(1):hover{
+	background-color: #8a8a8a;
+}
+#user_setup div:nth-child(2){
+	width: 80px;
+	height: 50%;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	
+	transition: 0.5s;
+}
+#user_setup div:nth-child(2):hover{
+	background-color: #8a8a8a;
+}

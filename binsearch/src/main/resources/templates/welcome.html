@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Welcome to Bin's search</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport"
+        content="width-device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scallable=no">
+        
+        <link rel="shortcut icon" href="../img/B.ico" type="image/x-icon" />
+        <style type="text/css">
+            body{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                flex-direction: column;
+                background-color: #fafafa;
+            }
+            h2{
+                font-family: Helvetica;
+                font-size: 36px;
+                margin-top: 40px;
+                color: #333;
+                opacity: 0;
+            }
+            circle{
+                stroke-dasharray: 1194;
+                stroke-dashoffset: 1194;
+            }
+            .tick{
+                stroke-dasharray: 350;
+                stroke-dashoffset: 350;
+            }
+            @keyframes circle {
+                from{
+                    stroke-dashoffset: 1194;
+                }
+                to{
+                    stroke-dashoffset: 2388;
+                }
+            }
+            @keyframes tick {
+                from{
+                    stroke-dashoffset: 350;
+                }
+                to{
+                    stroke-dashoffset: 0;
+                }
+            }
+            @keyframes title {
+                from{
+                    opacity: 0;
+                }
+                to{
+                    opacity: 1;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <svg width="400" height="400">
+            <circle id="circle" fill="none" stroke="#68E534" stroke-width="20" cx="200" cy="200" r="190" stroke-linecap="round" transform="rotate(-90 200 200)" />
+            <polyline class="tick" fill="none" stroke="#68E534" stroke-width="24" points="88,214 173,284 304,138" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <h2 id="title"><a style="color: #333;text-decoration: none" href="/">Registered successfully, please log in.</a></h2>
+    </body>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#circle").css("animation","circle 1s ease-in-out forwards");
+            setTimeout(function(){
+                $(".tick").css("animation","tick .8s ease-out forwards");
+
+            },950)
+            setTimeout(function () {
+                $("#title").css("animation","title .6s ease-in-out forwards");
+            },1200)
+        })
+    </script>
+</html>

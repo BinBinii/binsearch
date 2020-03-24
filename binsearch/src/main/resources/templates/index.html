@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <title>开始</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width-device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scallable=no">
+
+    <link rel="shortcut icon" href="/img/B.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/SearchBar.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/Setup.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link rel="stylesheet" href="/css/Login.css">
+    <link rel="stylesheet" href="/css/Logout.css">
+
+    <!-- <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    
+    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+
+</head>
+
+<body id="bg" leftmargin=0 topmargin=0 oncontextmenu='return false' ondragstart='return false'
+    onselectstart='return false' onselect='document.selection.empty()' oncopy='document.selection.empty()'
+    onbeforecopy='return false' onmouseup='document.selection.empty()'
+    style='overflow:-Scroll;overflow-y:hidden;overflow-x:hidden'>
+
+    <div id="blur" class="blur"></div>
+
+    <div id="times" onmouseover="times_over()" onmouseout="times_out()" onclick="times_click()">
+        <div id="times_content"></div>
+        <div id="times_border"></div>
+    </div>
+	
+    <div id="box">
+	    <div id="search_choose">
+	    	<div id="baidu">
+	    		<img alt="" src="/img/baidu.png">
+	    	</div>
+	    	<div id="biying">
+	    		<img alt="" src="/img/biying.png">
+	    	</div>
+	    	<div id="google">
+	    		<img alt="" src="/img/google.png">
+	    	</div>
+	    </div>
+<!-- onsubmit="return baiduWithHttps(this)" -->
+<!-- http://www.baidu.com/baidu name="wd"-->
+        <form id="formBox"  action="https://www.baidu.com/baidu" target="_blank">
+            <div id="out">
+                <div id="ser_box">
+                    <input id="ipt" type="text" onfocus="checkHttps" name="wd" size="30" autocomplete="off">
+                    <div id="input_text">Search</div>
+                </div>
+                <div id="bot_box">
+                    <ul id="oul"></ul>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    
+    <div id="txt" class="txt">
+        <div id="txt_content">
+            <div id="txt_p1"></div>
+            <div id="txt_p2"></div>
+        </div>
+    </div>
+
+    <div id="copyright">
+        <p style="letter-spacing: 1px">&copy;2019 <a href="http://49.233.182.19/BinObjects/">Bin's Blog</a> | <a href="http://49.233.182.19:8080/Search/">开始</a></p>
+    </div>
+
+    <div id="welcome_box">
+        <div id="welcome">
+            <div id="welcome_close" onclick="wl_start()">
+                <div class="wl_close_l1"></div>
+                <div class="wl_close_l2"></div>
+            </div>
+            <div id="welcome_content">
+                <p class="wl_title">焕然一新</p>
+                <p class="wl_title1">「开始」导航页功能仍在开发中...</p>
+                <div id="wl_content_d">
+                    <div id="wl_content_img">
+                        <img src="img/link.png" alt="">
+                    </div>
+                    <p class="wl_content_d_title">自定义快捷导航链接</p>
+                    <p class="wl_content_d_ct">现在，你可以添加自定义导航链接以快捷访问喜欢的网站。</p>
+                </div>
+                <div id="wl_content_d">
+                    <div id="wl_content_img">
+                        <img src="img/photo.png" alt="">
+                    </div>
+                    <p class="wl_content_d_title">背景图像每日更新</p>
+                    <p class="wl_content_d_ct">通过「设置」挑选你喜欢的壁纸。</p>
+                </div>
+                <div id="wl_content_d">
+                    <div id="wl_content_img">
+                        <img src="img/warning.png" alt="">
+                    </div>
+                    <p class="wl_content_d_title">注意事项</p>
+                    <p class="wl_content_d_ct">本站暂不支持360、IE6.0版本以下的浏览器。</p>
+                </div>
+                <div id="wl_content_start" onclick="wl_start()">
+                    <p>开始</p>`
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Setup">
+        <div id="SetupBg" onclick="Setup_click()"></div>
+        
+	    <div id="User_btn" th:if="${session.user}==null">
+	        <img id="Setup_user_img" src="img/User.png" alt="">
+	    </div>
+	    <form th:action="@{~/user/logout_do}" method="post" id="Logout">
+	        <p id="username_box" th:if="${session.user}!=null" style="position: absolute;right: 130px;top: 35px;color: #FFF;font-size: 12px;transition: all 0.5s;">Signed in as <span style="cursor: pointer;font-weight: 600;" onclick="user_setup_show()" th:text="${session.user.username}"></span></p>
+	    </form>
+        
+        <div id="user_setup">
+        	<div>个人中心</div>
+        	<div onclick="Logout_choose_show()">注销</div>
+        </div>
+        
+        <div id="Setup_btn">
+            <img id="Setup_btn_img" src="/img/Setup.png" alt="">
+        </div>
+
+        <div id="ShortcutBar_Box">
+            <div id="ShortcutBar_default">
+                <ul>
+                    <li><a target="_blank" href="https://translate.google.cn/?hl=zh-CN">翻译</a></li>
+                    <li><a target="_blank" href="https://map.baidu.com/">地图</a></li>
+                    <li><a target="_blank" href="https://unsplash.com/">图片</a></li>
+                    <li><a target="_blank" href="https://mail.qq.com/">QQ邮箱</a></li>
+                    <li><a target="_blank" href="https://github.com/">GitHub</a></li>
+                    <li><a target="_blank" href="https://www.bilibili.com/">Bilibili</a></li>
+                    <li><a target="_blank" href="https://www.youku.com/">优酷</a></li>
+                    <li><a target="_blank" href="https://www.iqiyi.com/">爱奇艺</a></li>
+                    <li><a target="_blank" href="https://pan.baidu.com/">百度网盘</a></li>
+                    <li><a target="_blank" href="https://www.jd.com/">京东</a></li>
+                    <li><a target="_blank" href="https://www.tmall.com/">天猫</a></li>
+                    <li><a target="_blank" href="https://www.taobao.com/">淘宝</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="ShortcutBar_custom_box">
+            <div id="ShortcutBar_custom">
+                <ul>
+                        <li id="link1">
+                		</li>
+	                    <li id="link2">
+	                    </li>
+	                    <li id="link3">
+	                    </li>
+	                    <li id="link4">
+	                    </li>
+	                    <li id="link5">
+	                    </li>
+	                    <li id="link6">
+	                    </li>
+	                    <li id="link7">
+	                    </li>
+	                    <li id="link8">
+	                    </li>
+	                    <li id="link9">
+	                    </li>
+	                    <li id="link10">
+	                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="custom_window">
+        <p>添加网站捷径</p>
+        <form id="LinkForm">
+            <div class="cw_box">
+                <input name="linkContent" type="text" placeholder="网址" autocomplete="off" >
+            </div>
+            <div class="cw_box">
+                <input name="linkTitle" type="text" placeholder="标题" autocomplete="off" >
+            </div>
+        </form>
+        <div id="custom_btn">添加</div>
+    </div>
+    
+	<div id="custom_del">
+	   	<p>删除</p>
+	</div>
+
+    <div id="photo_box">
+        <div id="change_photo">
+            <div id="change_photo_title">背景图像</div>
+            <div id="photo_close" onclick="photo_close('change_photo')">
+                <div class="wl_close_l1"></div>
+                <div class="wl_close_l2"></div>
+            </div>
+            <div id="photo_content">
+                <p class="photo_title">精选</p>
+                <div class="photo_list">
+                    <ul>
+                    	<li><img src="/img/handpick/1206_156215662.png" alt=""></li>
+                        <li><img src="/img/handpick/Bing_20191116.jpg" alt=""></li>
+                        <li><img src="/img/handpick/UncompahgreForest_ZH-CN6161020948_1920x1080.jpg" alt=""></li>
+                        <li><img src="/img/handpick/HallstattAustria_PT-BR9407016733_1920x1080.jpg" alt=""></li>
+                        <li><img src="/img/handpick/PingganVillage_ZH-CN10035092925_1920x1080.jpg" alt=""></li>
+                        <li><img src="/img/handpick/QingMingHuangShan_ZH-CN12993895964_1920x1080.jpg" alt=""></li>
+                        <li><img src="/img/handpick/YosemiteFog_EN-AU8423699903_1920x1080.jpg" alt=""></li>
+                    </ul>
+                </div>
+                <p class="photo_title">必应</p>
+                <div class="photo_list">
+                    <ul>
+                        <li><img src="https://api.dujin.org/bing/1920.php" alt=""></li>
+                    </ul>
+                </div>
+                <p class="photo_title">二次元</p>
+                <div class="photo_list">
+                    <ul>
+                        <li><img src="/img/anime/IMG_2592.JPG" alt=""></li>
+                        <li><img src="/img/anime/IMG_2565.JPG" alt=""></li>
+                        <li><img src="/img/anime/IMG_2593.JPG" alt=""></li>
+                        <li><img src="/img/anime/IMG_2568.JPG" alt=""></li>
+                    </ul>
+                </div>
+                <!-- <p class="photo_title">动态</p>
+                <div class="photo_list">
+                    <ul>
+                        <li><img src="https://api.dujin.org/bing/1920.php" alt=""></li>
+                    </ul>
+                </div> -->
+            </div>
+        </div>
+
+        <div id="Login_box">
+            <div id="Login_close" onclick="photo_close('Login_box')">
+                <div class="wl_close_l1"></div>
+                <div class="wl_close_l2"></div>
+            </div>
+            <div id="Login_title">用户登录</div>
+            <div id="Login_main">
+                <form th:action="@{~/user/login_do}" method="post">
+                    <div id="form_box1" class="form_box">
+                        <p class="login_txt1">Username:</p>
+                        <input id="username_input" type="text" name="username" autocomplete="off" >
+                    </div>
+                    <div class="form_box">
+                        <p class="login_txt2">Password:</p>
+                        <input type="password" name="password" autocomplete="off" >
+                    </div>
+                    <input id="Login_btn" value="Sign in" type="submit"/>
+                </form>
+                <p class="reg_btn"><a href="/user/register">No account? Sign up now.</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="Logout_choose_box">
+   		<div id="Logout_choose">
+   			<p class="Logout_title">确定退出当前账号吗？</p>
+   			<form>
+   				<div class="Logout_btn" onclick="document.getElementById('Logout').submit()">确认</div>
+   				<div id="Logout_hide" class="Logout_btn">取消</div>
+   			</form>
+   		</div>
+    </div>
+
+    <div id="message">
+        <p style="font-size: 12px"></p>
+    </div>
+    
+</body>
+<script src="http://s1.bdstatic.com/r/www/cache/global/js/BaiduHttps_20150714_zhanzhang.js"></script>
+<script src="/js/SearchBar.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/statements.js" type="text/javascript" charset="utf-8"></script>
+<script src="/js/index_animation.js"></script>
+<script src="/js/Setup.js"></script>
+<script src="/js/Login.js"></script>
+<script src="/js/Logout.js"></script>
+<script th:inline="javascript">
+    $(function () {
+        var objTime = new Date();
+        function setTime() {
+            var year = objTime.getFullYear(); //年
+            var month = objTime.getMonth(); //月
+            var day = objTime.getDate(); //日期
+            var hour = objTime.getHours() < 10 ? '0' + objTime.getHours() : objTime.getHours(); //时
+            var minute = objTime.getMinutes() < 10 ? '0' + objTime.getMinutes() : objTime.getMinutes(); //分
+            var second = objTime.getSeconds() < 10 ? '0' + objTime.getSeconds() : objTime.getSeconds(); //秒
+            $("#times_content").html(hour + ":" + minute); //给span赋值显示时间
+            objTime = new Date(year, month, day, objTime.getHours(), objTime.getMinutes(), objTime
+                .getSeconds() + 1); //当前时间加一秒
+        }
+        window.setInterval(setTime, 1000);
+        document.cookie = "photo=1";
+        var msg = [[${loginMsg}]];
+        if(msg != null && msg != ""){
+        	$("#message p").html(msg);
+        	login_true();
+        }
+        if(msg != null && msg != ""){
+        	$("#message p").html(msg);
+        	login_true();
+        }
+        
+        selectAllLink();
+    });
+
+    $("#search_choose div").click(function(){
+    	var id = $(this).attr("id")
+    	SetCookie("choose", id);
+    	$(this).css('animation', 'search_choose_true 0.5s forwards');
+    	$("#search_choose div").not(this).css('animation', 'search_choose_false 0.5s forwards');
+    	switch (id) {
+		case "baidu":{
+			$("#formBox").attr("action","https://www.baidu.com/baidu");
+			$("#ipt").attr("name","wd")
+			break;
+		}
+		case "biying":{
+			$("#formBox").attr("action","https://cn.bing.com/search");
+			$("#ipt").attr("name","q")
+			break;
+		}
+		case "google":{
+			$("#formBox").attr("action","https://www.google.com/search");
+			$("#ipt").attr("name","q");
+			break;
+		}
+		default:
+			break;
+		}
+    });
+    
+    function addLink(id){
+    	$.ajax({
+    		url:"/link/increaseLink",
+    		type:"post",
+    		data:{
+    			linkId: id,
+    			linkTitle: $("input[name='linkTitle']").val(),
+    			linkContent: $("input[name='linkContent']").val()
+    		},
+    		dataType:"json",
+    		success:function(msg){
+    			if(msg.isSuccess){
+
+    			}else{
+
+    			}
+    		}
+    	});
+    	setTimeout(function() {
+			selectAllLink();
+		}, 1000);
+    	
+    	login_true();
+    }
+    function delLink(id){
+    	const ids = document.querySelector("#"+id+" div");
+    	$("#"+id+" div p").fadeOut(200);
+    	ids.classList.add('animated', 'bounceOut');
+    	$.ajax({
+    		url:"/link/delLink",
+    		type:"post",
+    		data:{
+    			linkId: id,
+    		},
+    		dataType:"json",
+    		success:function(msg){
+    			if(msg.isSuccess){
+
+    			}else{
+
+    			}
+    		}
+    	});
+    	setTimeout(function() {
+			selectAllLink();
+		}, 1000);
+    }
+    function selectAllLink(){
+    	$.ajax({
+    		url:"/link/SelLink",
+    		type:"post",
+    		data:{
+    			
+    		},
+    		dataType:"json",
+    		success:function(msg){
+				if(msg.isSuccess){
+					$("#ShortcutBar_custom li").html("<div class='link_false'>"+"+"+"</div>");
+    			}else{
+    				if(msg.link1Title == "null" || msg.link1Content == "" || msg.link1Title == null){
+	    				$("#link1").html("<div class='link_false'>"+"+"+"</div>");
+	    			}else{
+	    				$("#link1").html("<div class='link_true'><a target='view_window' href='http://"+msg.link1Content+"'>"+(msg.link1Title).substring(0,1) +"</a><p>"+msg.link1Content+"</p></div>");
+	    			}
+	    			if(msg.link2Title == "null" || msg.link2Content == "" || msg.link2Title == null){
+	    				$("#link2").html("<div class='link_false'>"+"+"+"</div>");
+	    			}else{
+	    				$("#link2").html("<div class='link_true'><a target='view_window' href='http://"+msg.link2Content+"'>"+(msg.link2Title).substring(0,1) +"</a><p>"+msg.link2Content+"</p></div>");
+	    			}
+	    			if(msg.link3Title == "null" || msg.link3Content == "" || msg.link3Title == null){
+	    				$("#link3").html("<div class='link_false'>"+"+"+"</div>");
+	    			}else{
+	    				$("#link3").html("<div class='link_true'><a target='view_window' href='http://"+msg.link3Content+"'>"+(msg.link3Title).substring(0,1) +"</a><p>"+msg.link3Content+"</p></div>");
+	    			}
+	    			if(msg.link4Title == "null" || msg.link4Content == "" || msg.link4Title == null){
+	    				$("#link4").html("<div class='link_false'>"+"+"+"</div>");
+	    			}else{
+	    				$("#link4").html("<div class='link_true'><a target='view_window' href='http://"+msg.link4Content+"'>"+(msg.link4Title).substring(0,1) +"</a><p>"+msg.link4Content+"</p></div>");
+	    			}
+	    			if(msg.link5Title == "null" || msg.link5Content == "" || msg.link5Title == null){
+	    				$("#link5").html("<div class='link_false'>"+"+"+"</div>");
+	    			}else{
+	    				$("#link5").html("<div class='link_true'><a target='view_window' href='http://"+msg.link5Content+"'>"+(msg.link5Title).substring(0,1) +"</a><p>"+msg.link5Content+"</p></div>");
+	    			}
+	    			if(msg.link6Title == "null" || msg.link6Content == "" || msg.link6Title == null){
+	    				$("#link6").html("<div class='link_false'>"+"+"+"</div>");
+	    			}else{
+	    				$("#link6").html("<div class='link_true'><a target='view_window' href='http://"+msg.link6Content+"'>"+(msg.link6Title).substring(0,1) +"</a><p>"+msg.link6Content+"</p></div>");
+	    			}
+	    			if(msg.link7Title == "null" || msg.link7Content == "" || msg.link7Title == null){
+	    				$("#link7").html("<div class='link_false'>"+"+"+"</div>");
+	    			}else{
+	    				$("#link7").html("<div class='link_true'><a target='view_window' href='http://"+msg.link7Content+"'>"+(msg.link7Title).substring(0,1) +"</a><p>"+msg.link7Content+"</p></div>");
+	    			}
+	    			if(msg.link8Title == "null" || msg.link8Content == "" || msg.link8Title == null){
+	    				$("#link8").html("<div class='link_false'>"+"+"+"</div>");
+	    			}else{
+	    				$("#link8").html("<div class='link_true'><a target='view_window' href='http://"+msg.link8Content+"'>"+(msg.link8Title).substring(0,1) +"</a><p>"+msg.link8Content+"</p></div>");
+	    			}
+	    			if(msg.link9Title == "null" || msg.link9Content == "" || msg.link9Title == null){
+	    				$("#link9").html("<div class='link_false'>"+"+"+"</div>");
+	    			}else{
+	    				$("#link9").html("<div class='link_true'><a target='view_window' href='http://"+msg.link9Content+"'>"+(msg.link9Title).substring(0,1) +"</a><p>"+msg.link9Content+"</p></div>");
+	    			}
+	    			if(msg.link10Title == "null" || msg.link10Content == "" || msg.link10Title == null){
+	    				$("#link10").html("<div class='link_false'>"+"+"+"</div>");
+	    			}else{
+	    				$("#link10").html("<div class='link_true'><a target='view_window' href='http://"+msg.link10Content+"'>"+(msg.link10Title).substring(0,1) +"</a><p>"+msg.link10Content+"</p></div>");}
+    			}
+    			
+    		}
+    	});
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    <head>
+        <title>开始 | 注册</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport"
+        content="width-device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scallable=no">
+        
+        <link rel="shortcut icon" href="../img/B.ico" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="../css/Reg.css"/>
+    </head>
+    <body>
+        <div id="top"></div>
+        <div id="box">
+            <div id="text_content">
+            </div>
+            <div id="reg_content">
+                <form th:action="@{~/user/register_do}" onsubmit="return validate_form(this)" method="post">
+                    <p class="reg_content_txt1">Username</p>
+                    
+                    <input type="text" name="username" autocomplete="off"/>
+                    <div id="username_prompt"></div>
+                    <p class="reg_content_txt1">Email</p>
+                    <input type="email" name="email" autocomplete="off"/>
+                    <p class="reg_content_txt1">Password</p>
+                    <input type="password" name="password"/>
+                    <p class="reg_content_txt1">Confirm Password</p>
+                    <input type="password" name="confirm_password"/>
+                    <p class="reg_content_txt2">Maks sure it's greater than 8 characters and less than 16 characters and contains a capital letter.</p>
+                    <input id="subMit" class="submit_class" onmousemove="btn_move('subMit')" onmouseout="btn_out('subMit')" value="Sign up for Bin's Blog" type="submit"/>
+                </form>
+            </div>
+        </div>
+        
+        <div id="message">
+			<p style="font-size: 12px"></p>
+		</div>
+    </body>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="../js/Reg.js"></script>
+    <script>
+	    $(function(){
+			$("input[name='username']").blur(verifyUsername);
+		});
+		function verifyUsername(){
+		    $.ajax({
+		        type: "POST",
+		        dataType: "json",
+		        url: "/user/verifyusername" ,
+		        data: {
+		        	username : $("input[name='username']").val(),
+		        },
+		        success: function (msg) {
+		            if(msg.isSuccess==false){
+		            	$("#username_prompt").html("<font style='font-size: 12px;color: red;'>This username has been registered</font>");
+		            }else{
+		            	$("#username_prompt").html("<font style='font-size: 12px;color: green;'>This username can be registered</font>");
+		            }
+		        },
+		    });
+		}
+    </script>
+</html>

@@ -1,0 +1,295 @@
+
+*{	
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+#bg{
+    /* background-image: url(https://api.dujin.org/bing/1920.php);   */
+    background-repeat: no-repeat;
+    background-position: center bottom;   
+    background-attachment: fixed;
+    background-size: cover;
+    /* background-size: 100% 100%; */
+    height: 100%;
+}
+
+/* .bg{
+    background-image: url(../img/UncompahgreForest_ZH-CN6161020948_1920x1080.jpg);   
+    
+    background-position: center bottom; 
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100%;
+  } */
+  /* .glass{
+    position: relative;                   
+    padding: 0;
+    border-bottom: 1px solid;
+    border-bottom-color: #ccc;
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+    height: 100%;
+    width: 100%;
+  } */
+  .blur {    
+    /* background-image: url(https://api.dujin.org/bing/1920.php); */
+    background-repeat: no-repeat;
+    height: 100%;               
+    width: 100%;
+    
+    position: absolute;           
+    top: 0px;
+    padding: 0;
+    background-position: center bottom;
+    background-attachment: fixed;
+    background-size: cover;
+    /* background-size: 100% 100%; */
+    font-size: 100%;
+    /* animation: blur_click 0.5s forwards; */
+    
+    /* 模糊滤镜 */
+      filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+      
+      -webkit-filter: blur(5px); /* Chrome, Opera */
+         -moz-filter: blur(5px);
+          -ms-filter: blur(5px);    
+              filter: blur(5px);
+      
+      filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+  }
+@keyframes blur_click{
+    from{
+      transform:scale(1);
+    }
+    to{
+      transform:scale(1.1);
+    }
+}
+  @keyframes blur_out{
+    from{
+      transform:scale(1.1);
+    }
+    to{
+      transform:scale(1);
+    }
+}
+@media screen and (min-width: 1150px) {
+  #txt{
+    z-index: 1;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    bottom: 130px;
+    width: 100%;
+    height: 80px;
+    color: #FFF;
+
+    transition: bottom 0.5s;
+  }
+}
+@media screen and (max-width: 1150px) {
+  #txt{
+    z-index: 1;
+    cursor: pointer;
+    font-size: 14px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    bottom: 80px;
+    width: 100%;
+    height: 80px;
+    color: #FFF;
+
+    transition: bottom 0.5s;
+  }
+}
+
+@keyframes txt_over{
+  from{
+    color: #FFF;
+  }to{
+    background-color: rgb(226, 226, 226);
+    color: rgb(85, 84, 84);
+  }
+}
+@keyframes txt_out{
+  from{
+    background-color: rgb(226, 226, 226);
+    color: rgb(85, 84, 84);
+  }to{
+    color: #FFF;
+  }
+}
+#txt_content{
+  margin: auto;
+  line-height: 25px;
+}
+#copyright{
+  font-size: 12px;
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  height: 20px;
+  color: #333;
+}
+#copyright a{
+  text-decoration: none;
+  color: #333;
+  transition: all .5s;
+}
+#copyright a:hover{
+  color: #545454;
+}
+#welcome_box{
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  /* display: flex; */
+  align-items: center;
+  z-index: 10000;
+  display: none;
+}
+#welcome{
+  margin: auto;
+  position: relative;
+  top: 24%;
+  border-radius: 20px;
+  width: 580px;
+  height: 500px;
+  background: rgba(255,255,255,1);
+
+  transform-style: preserve-3d;
+  /* transform: rotateX(10deg) rotateY(-5deg) rotateZ(0deg); */
+}
+@keyframes wl_enter{
+  from{
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }to{
+    transform: rotateX(-10deg) rotateY(-5deg) rotateZ(0deg);
+  }
+}
+@keyframes wl_leave{
+  from{
+    transform: rotateX(-10deg) rotateY(-5deg) rotateZ(0deg);
+  }to{
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+}
+#welcome_close{
+  position: relative;
+  float: right;
+  right: 40px;
+  top: 45px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transform-origin: 50% 50%;
+}
+.wl_close_l1{
+  margin-top: 20px;
+  width: 20px;
+  height: 2px;
+  background-color: #CCC;
+  transform: rotate(-45deg);
+}
+.wl_close_l2{
+  width: 20px;
+  height: 2px;
+  background-color: #CCC;
+  transform: rotate(45deg);
+  position: relative;
+  top: -2px;
+}
+@keyframes wl_close_enter{
+  from{
+    
+  }to{
+    transform: rotate(180deg);
+  }
+}
+@keyframes wl_close_leave{
+  from{
+    
+  }to{
+    transform: rotate(-180deg);
+  }
+}
+#welcome_content{
+  /* margin-top: 70px; */
+  position: relative;
+  top: 70px;
+  width: 400px;
+  height: 380px;
+}
+.wl_title{
+  font-size: 24px;
+  text-align: center;
+}
+.wl_title1{
+  margin-top: 10px;
+  font-size: 12px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+#wl_content_d{
+  width: 100%;
+  margin-bottom: 10px;
+  height: 70px;
+}
+#wl_content_img{
+  float: left;
+  margin-top: 5px;
+  width: 40px;
+  height: 40px;
+  /* background-color: #CCC; */
+}
+#wl_content_img img{
+  float: right;
+  width: 80%;
+  height: 80%;
+}
+.wl_content_d_ct{
+  float: left;
+  font-size: 12px;
+  line-height: 18px;
+  margin-left: 20px;
+  color: rgb(105, 105, 105);
+}
+.wl_content_d_title{
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 5px;
+  position: relative;
+  left: 20px;
+  margin-bottom: 5px;
+}
+#wl_content_start{
+  /* margin-top: 25px; */
+  width: 300px;
+  height: 35px;
+  background-color: #80c919;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+
+}
+#wl_content_start:hover{
+  background-color: #77bb19;
+}
+#wl_content_start p{
+  font-size: 14px;
+  color: #FFF;
+}
